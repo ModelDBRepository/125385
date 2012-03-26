@@ -1,0 +1,23 @@
+//moddir mod
+// above compiles mod files in mod folder on auto-launch
+xpanel("Diba et al. 2006 model code loader")
+  xbutton("simulations with gna_dend=27 pS/um","{gna_dend27_fnc() remove_xpanel()}")
+  xbutton("simulations with gna_dend=14 pS/um","{gna_dend14_fnc() remove_xpanel()}")
+  xlabel("choose one of the above configuration choices for")
+  xlabel("the model associated with Diba et al. 2006")
+xpanel()
+
+proc gna_dend27_fnc() {
+  print "loading gna_dend=27 pS/um version"
+  load_file("BACModel.hoc")
+}
+
+proc gna_dend14_fnc() {
+  print "loading gna_dend=14 pS/um version"
+  load_file("BACpna.hoc")
+}
+
+proc remove_xpanel() {
+  PWManager[0].close(2)
+  PWManager[0].close(1)
+}
